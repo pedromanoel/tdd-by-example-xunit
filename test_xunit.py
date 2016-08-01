@@ -1,7 +1,7 @@
 from wasrun import WasRun
 from testcase import TestCase
 
-test = WasRun()
+test = WasRun("testMethod")
 print test.wasRun
-test.testMethod()
+test.run()
 print test.wasRun
