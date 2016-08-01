@@ -1,7 +1,14 @@
 from wasrun import WasRun
 from testcase import TestCase
 
-test = WasRun("testMethod")
-print test.wasRun
-test.run()
-print test.wasRun
+class TestCaseTest(TestCase):
+    """Test if the TestCase is working"""
+
+    def test_running(self):
+        test = WasRun("test_method")
+
+        assert(not test.wasRun)
+        test.run()
+        assert(test.wasRun)
+
+TestCaseTest("test_running").run()

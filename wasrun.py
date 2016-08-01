@@ -6,5 +6,5 @@ class WasRun(TestCase):
         self.wasRun = None
         TestCase.__init__(self, name)
 
-    def testMethod(self):
+    def test_method(self):
         self.wasRun = 1
