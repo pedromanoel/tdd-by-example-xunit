@@ -1,3 +1,16 @@
+class TestSuite:
+
+    def __init__(self):
+        self.tests = []
+
+    def add(self, test):
+        self.tests.append(test)
+
+    def run(self, result):
+        for test in self.tests:
+            test.run(result)
+
+
 class TestCase:
 
     def __init__(self, name):
@@ -9,8 +22,7 @@ class TestCase:
     def tear_down(self):
         pass
 
-    def run(self):
-        result = TestResult()
+    def run(self, result):
         result.test_started()
 
         self.setup()
@@ -21,7 +33,6 @@ class TestCase:
 
         self.tear_down()
 
-        return result
 
 class TestResult:
 
