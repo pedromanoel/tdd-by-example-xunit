@@ -7,3 +7,6 @@ class WasRun(TestCase):
 
     def test_method(self):
         self.log = self.log + "test_method "
+
+    def tear_down(self):
+        self.log = self.log + "tear_down "
