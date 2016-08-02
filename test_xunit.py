@@ -4,17 +4,16 @@ from testcase import TestCase
 class TestCaseTest(TestCase):
     """Test if the TestCase is working"""
 
-    def test_running(self):
-        test = WasRun("test_method")
+    def setup(self):
+        self.test = WasRun("test_method")
 
-        assert(not test.wasRun)
-        test.run()
-        assert(test.wasRun)
+    def test_running(self):
+        self.test.run()
+        assert(self.test.wasRun)
 
     def test_setup(self):
-        test = WasRun("test_method")
-        test.run()
-        assert(test.wasSetUp)
+        self.test.run()
+        assert(self.test.wasSetUp)
 
 TestCaseTest("test_running").run()
 TestCaseTest("test_setup").run()
