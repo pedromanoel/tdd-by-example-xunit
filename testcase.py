@@ -10,22 +10,30 @@ class TestCase:
         pass
 
     def run(self):
-        result = Result()
+        result = TestResult()
         result.test_started()
 
         self.setup()
-        getattr(self, self.name)()
+        try:
+            getattr(self, self.name)()
+        except:
+            result.test_failed()
+
         self.tear_down()
 
         return result
 
-class Result:
+class TestResult:
 
     def __init__(self):
         self.run_count = 0
+        self.failure_count = 0
 
     def test_started(self):
         self.run_count += 1
 
+    def test_failed(self):
+        self.failure_count += 1
+
     def summary(self):
-        return "%d run, 0 failed" % self.run_count
+        return "%d run, %d failed" % (self.run_count, self.failure_count)
